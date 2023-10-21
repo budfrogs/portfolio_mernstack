@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: server-dev
+    ports:
+      - '5000:5000'
+    volumes:
+      - logs:/app/logs
+      - ./server:/app
+      - /app/node_modules
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: client-dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - server
+volumes:
+  logs:

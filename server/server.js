@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const corsOptions = { origin: '*', optionsSuccesStatus: 200 };
 require('dotenv').config({ path: './config.env' });
-const port = process.env.PORT || 5000;
-app.use(cors());
+const port = process.env.PORT || 5001;
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(require('./routes/movie'));
 

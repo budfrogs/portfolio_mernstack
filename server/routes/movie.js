@@ -12,6 +12,7 @@ movieRoutes.get('/movie', async (req, res) => {
 });
 
 movieRoutes.post('/movie/search', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   let year = 0;
   let title = '';
   let cast = '';

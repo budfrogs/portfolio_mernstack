@@ -39,13 +39,16 @@ function MovieList() {
     // When a post request is sent to the create url, we'll add a new movie to the database.
     const newSearch = { ...form };
 
-    const response = await fetch('http://budfrogsdev.me:5000/movie/search', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newSearch),
-    }).catch((error) => {
+    const response = await fetch(
+      'http://test.budfrogsdev.me:5001/movie/search',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newSearch),
+      }
+    ).catch((error) => {
       if (response === undefined) {
         const message = `An error occurred: ${response.statusText}`;
         window.alert(message);
@@ -64,7 +67,7 @@ function MovieList() {
 
   // This method will delete a movie
   // async function deleteMovie(id) {
-  //   await fetch(`http://budfrogsdev.me:5000/${id}`, {
+  //   await fetch(`http://test.budfrogsdev.me:5001/${id}`, {
   //     method: 'DELETE',
   //   });
 
@@ -162,7 +165,8 @@ function MovieList() {
   // This following section will display the table with the records of individuals.
   return (
     <div>
-      <h3>Movie List</h3>
+      <h3>Movie List Test Site</h3>
+      <h5>(Note: Main list 2018 and older. 2023 two test movies.)</h5>
       {movieList()}
     </div>
   );

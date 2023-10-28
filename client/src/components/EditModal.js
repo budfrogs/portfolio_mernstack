@@ -39,7 +39,7 @@ function EditModal(props) {
     };
 
     const response = await fetch(
-      'http://budfrogsdev.me:5000/movie/updateOne',
+      'http://test.budfrogsdev.me:5001/movie/updateOne',
       requestOptions
     );
     if (!response.ok) {

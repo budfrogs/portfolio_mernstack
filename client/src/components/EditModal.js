@@ -19,10 +19,13 @@ function EditModal(props) {
   }
 
   function updateCast(e) {
-    setForm({ ...form, cast: e.target.value });
+    setForm({ ...form, cast: e.target.value.split(',') });
+    // console.log(form);
   }
+
   function updateGenre(e) {
-    setForm({ ...form, genre: e.target.value });
+    setForm({ ...form, genre: e.target.value.split(',') });
+    // console.log(form);
   }
 
   const handleClose = () => setShow(false);
@@ -38,10 +41,7 @@ function EditModal(props) {
       body: JSON.stringify(form),
     };
 
-    const response = await fetch(
-      'http://test.budfrogsdev.me:5001/movie/updateOne',
-      requestOptions
-    );
+    const response = await fetch('http://budfrogsdev.me:5001/movie/updateOne', requestOptions);
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
       window.alert(message);
@@ -57,12 +57,7 @@ function EditModal(props) {
         Edit Movie
       </Button>
 
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop='static'
-        keyboard={false}
-      >
+      <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Movie</Modal.Title>
         </Modal.Header>
@@ -100,7 +95,7 @@ function EditModal(props) {
                 aria-label='Cast'
                 aria-describedby='cast'
                 value={form.cast}
-                rows='8'
+                rows='4'
                 onChange={(e) => updateCast(e)}
               />
             </InputGroup>

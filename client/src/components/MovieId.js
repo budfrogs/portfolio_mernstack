@@ -13,9 +13,7 @@ function MovieId() {
     async function getMovieId() {
       let id = params.id;
       console.log('Id: ', { id });
-      const response = await fetch(
-        `http://test.budfrogsdev.me:5001/movie/${id}`
-      ); // pass to express route
+      const response = await fetch(`http://budfrogsdev.me:5001/movie/${id}`); // pass to express route
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

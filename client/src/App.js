@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
 import MovieList from './components/MovieList';
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<MovieList />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

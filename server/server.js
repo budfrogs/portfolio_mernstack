@@ -1,15 +1,15 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-const corsOptions = { origin: '*', optionsSuccesStatus: 200 };
-require('dotenv').config({ path: './config.env' });
-const port = process.env.PORT || 5001;
+const cors = require("cors");
+const corsOptions = { origin: "*", optionsSuccesStatus: 200 };
+require("dotenv").config({ path: "./config.env" });
+const port = process.env.PORT || 5010;
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(require('./routes/movie'));
+app.use(require("./routes/movie"));
 
 //get the driver connection
-const dbo = require('./db/conn');
+const dbo = require("./db/conn");
 
 app.listen(port, () => {
   dbo.connectToServer(function (err) {

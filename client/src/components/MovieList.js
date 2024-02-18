@@ -1,48 +1,49 @@
-import React, { useState } from 'react';
-import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import EditModal from './EditModal';
+import React, { useState } from "react";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import EditModal from "./EditModal";
 
 // import { Link } from 'react-router-dom';
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
-  // const hasFetched = useRef(false);
-  // This method fetches the movies from the database.
-  const [form, setForm] = useState({
-    title: '',
-    year: '',
-    cast: '',
-    genre: '',
+
+  const [formData, setFormData] = useState({
+    title: "",
+    year: "",
+    cast: "",
+    genres: "",
   });
 
-  //window.formObj = form;
-
-  //  These methods will update the state properties.
-
-  function searchTitle(e) {
-    setForm({ ...form, title: e.target.value });
-  }
-  function searchYear(e) {
-    setForm({ ...form, year: e.target.value });
+  function handleChange(event) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      };
+    });
   }
 
-  function searchCast(e) {
-    setForm({ ...form, cast: e.target.value });
-  }
-  function searchGenre(e) {
-    setForm({ ...form, genre: e.target.value });
+  function clearFormData() {
+    setFormData((prevFormData) => {
+      return {
+        title: "",
+        year: "",
+        cast: "",
+        genres: "",
+      };
+    });
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     // When a post request is sent to the create url, we'll add a new movie to the database.
-    const newSearch = { ...form };
+    const newSearch = { ...formData };
 
-    const response = await fetch('http://budfrogsdev.me:5001/movie/search', {
-      method: 'POST',
+    const response = await fetch("http://test.budfrogsdev.me:5010/movie/search", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newSearch),
     }).catch((error) => {
@@ -53,17 +54,15 @@ function MovieList() {
     });
 
     const movies = await response.json();
+
     window.myObj = movies;
     setMovies(movies);
-    form.title = '';
-    form.cast = [];
-    form.genre = [];
-    form.year = '';
+    clearFormData();
   }
 
   // This method will delete a movie
   // async function deleteMovie(id) {
-  //   await fetch(`http://budfrogsdev.me:5001/${id}`, {
+  //   await fetch(`http://test.budfrogsdev.me:5010/${id}`, {
   //     method: 'DELETE',
   //   });
 
@@ -72,64 +71,69 @@ function MovieList() {
   // }
 
   // This method will map out the records on the table
-  function movieList() {
+  function MovieList() {
+    //console.log("cardObject: ", movies);
     return (
-      <Container fluid className='container-md'>
+      <Container fluid className="container-md">
         <Form onSubmit={handleSubmit}>
-          <Row className='justify-content-center mb-3 pb-3 pt-3 movie-search'>
-            <Form.Group as={Col} controlId='formTitle'>
+          <Row className="justify-content-center mb-3 pb-3 pt-3 movie-search">
+            <Form.Group as={Col} controlId="formTitle">
               <Form.Control
-                title='Movie Title'
-                placeholder='Title'
-                aria-label='Title'
-                aria-describedby='Title'
-                onChange={(e) => searchTitle(e)}
-                value={form.title}
+                title="Movie Title"
+                placeholder="Title"
+                aria-label="Title"
+                aria-describedby="Title"
+                onChange={handleChange}
+                value={formData.title}
+                name="title"
               />
             </Form.Group>
-            <Form.Group as={Col} controlId='formCast'>
+            <Form.Group as={Col} controlId="formCast">
               <Form.Control
-                title='Names of Cast members.'
-                placeholder='Cast'
-                aria-label='Cast'
-                aria-describedby='Cast'
-                onChange={(e) => searchCast(e)}
-                value={form.cast}
+                title="Names of Cast members."
+                placeholder="Cast"
+                aria-label="Cast"
+                aria-describedby="Cast"
+                onChange={handleChange}
+                value={formData.cast}
+                name="cast"
               />
             </Form.Group>
-            <Form.Group as={Col} controlId='formGenre'>
+            <Form.Group as={Col} controlId="formGenres">
               <Form.Control
-                title='Comma delimited list of genre names'
-                placeholder='Genre'
-                aria-label='Genre'
-                aria-describedby='Genre'
-                onChange={(e) => searchGenre(e)}
-                value={form.genre}
+                title="Comma delimited list of genres names"
+                placeholder="Genres"
+                aria-label="Genres"
+                aria-describedby="Genres"
+                onChange={handleChange}
+                value={formData.genres}
+                name="genres"
               />
             </Form.Group>
-            <Form.Group as={Col} controlId='formYear'>
+            <Form.Group as={Col} controlId="formYear">
               <Form.Control
-                placeholder='Release Year'
-                aria-label='Year'
-                aria-describedby='Year'
+                placeholder="Release Year"
+                aria-label="Year"
+                aria-describedby="Year"
                 minLength={4}
                 maxLength={4}
-                onChange={(e) => searchYear(e)}
-                value={form.year}
+                onChange={handleChange}
+                value={formData.year}
+                name="year"
               />
             </Form.Group>
             <Form.Group as={Col}>
-              <Button variant='primary' type='submit'>
+              <Button variant="primary" type="submit">
                 Search
               </Button>
             </Form.Group>
           </Row>
         </Form>
-        <Row className='justify-content-center'>
+        <Row className="justify-content-center">
           {movies.map((cardObj, j) => {
             return (
-              <Card key={cardObj._id} style={{ width: '15rem' }}>
-                <Card.Img variant='top' src='logo192.png' />
+              <Card key={cardObj._id} style={{ width: "15rem" }}>
+                <Card.Img variant="top" className="center" src="logo192.png" max-width="100px" />
                 <Card.Body>
                   <Card.Title>{cardObj.title}</Card.Title>
                   <Card.Text>
@@ -137,11 +141,19 @@ function MovieList() {
                   </Card.Text>
                   <Card.Text>
                     <strong>Cast: </strong>
-                    {typeof cardObj.cast === 'undefined' ? '' : cardObj.cast.map((x) => x + ' ')}
+                    {typeof cardObj.cast === "undefined"
+                      ? ""
+                      : cardObj.cast.map((x, index) => {
+                          return cardObj.cast.length - 1 === index ? x : x + ",";
+                        })}
                   </Card.Text>
                   <Card.Text>
                     <strong>Genre: </strong>
-                    {typeof cardObj.genre === 'undefined' ? '' : cardObj.genre.map((x) => x + ' ')}
+                    {typeof cardObj.genres === "undefined"
+                      ? ""
+                      : cardObj.genres.map((x, index) => {
+                          return cardObj.genres.length - 1 === index ? x : x + ",";
+                        })}
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer>
@@ -158,9 +170,9 @@ function MovieList() {
   // This following section will display the table with the records of individuals.
   return (
     <div>
-      <h3>Movie List Site</h3>
+      <h3>Movie List Test Site</h3>
       <h5>(Note: Main list 2018 and older. A few in 2022 and 2023.)</h5>
-      {movieList()}
+      {MovieList()}
     </div>
   );
 }

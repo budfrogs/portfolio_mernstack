@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Card, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-import EditModal from './EditModal';
+import React, { useEffect, useRef, useState } from "react";
+import { Card, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import EditModal from "./EditModal";
 
 function MovieId() {
   const [movies, setMovies] = useState([]);
@@ -12,8 +12,8 @@ function MovieId() {
   useEffect(() => {
     async function getMovieId() {
       let id = params.id;
-      console.log('Id: ', { id });
-      const response = await fetch(`http://budfrogsdev.me:5001/movie/${id}`); // pass to express route
+      console.log("Id: ", { id });
+      const response = await fetch(`http://test.budfrogsdev.me:5010/movie/${id}`); // pass to express route
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -36,10 +36,10 @@ function MovieId() {
     //console.log('movies Object: ', movies.title, ' year: ', movies.year);
     return (
       <>
-        <Container fluid className='container-md'>
-          <Row className='justify-content-center'>
-            <Card key={movies._id} style={{ width: '13rem' }}>
-              <Card.Img variant='top' src='../logo192.png' />
+        <Container fluid className="container-md">
+          <Row className="justify-content-center">
+            <Card key={movies._id} style={{ width: "13rem" }}>
+              <Card.Img variant="top" src="../logo192.png" />
               <Card.Body>
                 <Card.Title>{movies.title}</Card.Title>
                 <Card.Text>

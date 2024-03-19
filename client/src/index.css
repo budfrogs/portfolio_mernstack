@@ -16,3 +16,12 @@ code {
   margin-right: auto;
   width: 50%;
 }
+
+.movie-search, .cardfooter {
+  background-color: cadetblue;
+}
+
+.create-label{
+  width: 20% !important;
+  background-color: cadetblue;
+}

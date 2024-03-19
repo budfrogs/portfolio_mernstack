@@ -20,7 +20,7 @@ function EditModal(props) {
   const handleShow = () => setShow(true);
   const handleSave = async () => {
     //add update call here!
-    console.log("save", JSON.stringify(formData));
+
     setShow(false);
 
     const requestOptions = {
@@ -41,18 +41,31 @@ function EditModal(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="primary"
+        onClick={handleShow}
+      >
         Edit Movie
       </Button>
 
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Edit Movie</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="title">Title</InputGroup.Text>
+              <InputGroup.Text
+                id="title"
+                className="create-label"
+              >
+                Title
+              </InputGroup.Text>
               <Form.Control
                 id="formTitle"
                 placeholder="Movie Title"
@@ -64,7 +77,12 @@ function EditModal(props) {
               />
             </InputGroup>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="year">Year</InputGroup.Text>
+              <InputGroup.Text
+                id="year"
+                className="create-label"
+              >
+                Year
+              </InputGroup.Text>
               <Form.Control
                 id="formYear"
                 placeholder="Movie Release Year"
@@ -76,7 +94,12 @@ function EditModal(props) {
               />
             </InputGroup>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="cast">Cast</InputGroup.Text>
+              <InputGroup.Text
+                id="cast"
+                className="create-label"
+              >
+                Cast
+              </InputGroup.Text>
               <Form.Control
                 id="formCast"
                 as="textarea"
@@ -91,7 +114,12 @@ function EditModal(props) {
               />
             </InputGroup>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="genres">Genre</InputGroup.Text>
+              <InputGroup.Text
+                id="genres"
+                className="create-label"
+              >
+                Genre
+              </InputGroup.Text>
               <Form.Control
                 id="formGenre"
                 as="textarea"
@@ -108,10 +136,16 @@ function EditModal(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            onClick={handleClose}
+          >
             Close
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button
+            variant="primary"
+            onClick={handleSave}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

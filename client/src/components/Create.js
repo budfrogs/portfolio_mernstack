@@ -45,18 +45,31 @@ export default function Create() {
   // This following section will display the form that takes the input from the user.
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Create Movie
+      <Button
+        variant="primary"
+        onClick={handleShow}
+      >
+        Add Movie
       </Button>
 
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Create Movie</Modal.Title>
+          <Modal.Title>Add Movie</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="title">Title</InputGroup.Text>
+            <InputGroup className="mb-1">
+              <InputGroup.Text
+                id="title"
+                className="p-2 create-label"
+              >
+                Title
+              </InputGroup.Text>
               <Form.Control
                 id="formTitle"
                 placeholder="Movie Title"
@@ -66,8 +79,13 @@ export default function Create() {
                 name="title"
               />
             </InputGroup>
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="year">Year</InputGroup.Text>
+            <InputGroup className="mb-1">
+              <InputGroup.Text
+                id="year"
+                className="p-2 create-label"
+              >
+                Year
+              </InputGroup.Text>
               <Form.Control
                 id="formYear"
                 placeholder="Movie Release Year"
@@ -79,8 +97,13 @@ export default function Create() {
                 name="year"
               />
             </InputGroup>
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="cast">Cast</InputGroup.Text>
+            <InputGroup className="mb-1">
+              <InputGroup.Text
+                id="cast"
+                className="p-2 create-label"
+              >
+                Cast
+              </InputGroup.Text>
               <Form.Control
                 id="formCast"
                 as="textarea"
@@ -93,8 +116,13 @@ export default function Create() {
                 name="cast"
               />
             </InputGroup>
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="genres">Genre</InputGroup.Text>
+            <InputGroup className="mb-1">
+              <InputGroup.Text
+                id="genres"
+                className="p-2 create-label"
+              >
+                Genre
+              </InputGroup.Text>
               <Form.Control
                 id="formGenre"
                 as="textarea"
@@ -110,10 +138,16 @@ export default function Create() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            onClick={handleClose}
+          >
             Close
           </Button>
-          <Button variant="primary" onClick={onSubmit}>
+          <Button
+            variant="primary"
+            onClick={onSubmit}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

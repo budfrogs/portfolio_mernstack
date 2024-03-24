@@ -1,4 +1,5 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
+import Create from "./Create";
 
 export default function Search(props) {
   const formData = props.formData;
@@ -82,6 +83,7 @@ export default function Search(props) {
             </Button>
           </Form.Group>
         </Form>
+        <Create />
       </Col>
     </Row>
   );

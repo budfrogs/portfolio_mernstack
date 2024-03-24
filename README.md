@@ -26,3 +26,7 @@ Future abilites that I plan to add are movie synopsis, movie picture, rating and
 - Node.js
 - Bootstrap
 - MongoDB
+
+## Tenzies
+
+- Dice created using CSS from https://dev.to/ekeijl/creating-dice-using-css-grid-j4

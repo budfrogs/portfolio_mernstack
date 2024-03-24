@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import Search from "./Search";
 import Moviecard from "./Moviecards";
+import "./MovieList.css";
 
-// import { Link } from 'react-router-dom';
-
-function MovieList() {
+export default function MovieList() {
   const [movies, setMovies] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -93,27 +92,33 @@ function MovieList() {
       />
     );
   }
+
   const moviesElements = card(movies);
   // console.log(moviesElements);
+  const Header = () => {
+    return (
+      <div className="text-white text-center ">
+        <h4>Movie List Test Site</h4>
+        <h5>(Note: Main list 2018 and older. A few in 2022 and 2023.)</h5>{" "}
+      </div>
+    );
+  };
 
   // This following section will display the table with the records of individuals.
   return (
     <div>
-      <h3>Movie List Test Site</h3>
-      <h5>(Note: Main list 2018 and older. A few in 2022 and 2023.)</h5>
       <Container
-        fluid
-        className="mt-5"
+        flex
+        className="mt-3 "
       >
+        <Header />
         <Search
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
+        {moviesElements}
       </Container>
-      <Container>{moviesElements}</Container>
     </div>
   );
 }
-
-export default MovieList;

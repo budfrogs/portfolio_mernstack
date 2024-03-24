@@ -1,0 +1,19 @@
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  
+
+  
+  .movie-search, .cardfooter {
+    background-color: cadetblue !important;
+  }
+  
+  .create-label{
+    width: 20% !important;
+    background-color: cadetblue;
+  }
+  

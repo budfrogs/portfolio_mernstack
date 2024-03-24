@@ -10,10 +10,12 @@ export default function Moviecard(props) {
         <Col
           key={idx}
           xs={10}
-          md={3}
+          sm={6}
+          md={4}
           xl={2}
           xxl={2}
         >
+          ``
           <Card className="h-100">
             <Card.Img
               variant="top"
@@ -45,7 +47,7 @@ export default function Moviecard(props) {
                     })}
               </Card.Text>
             </Card.Body>
-            <Card.Footer className="cardfooter">
+            <Card.Footer className="cardfooter text-center">
               <EditModal
                 editProps={cardObj}
                 movieId={cardObj._id}

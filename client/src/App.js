@@ -1,9 +1,11 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Footer from "./components/Footer";
-import MovieList from "./components/MovieList";
-import Navbar from "./components/Menu";
+import { HashRouter as Router, Outlet, Route, Routes } from "react-router-dom";
+import { Home } from "./Pages/Home";
+import { Tenzies } from "./Pages/Tenzies";
+import { Movie } from "./Pages/Movie";
+import Footer from "./Components/Footer";
+import Navbar from "./Components/Menu";
 
 function App() {
   return (
@@ -11,11 +13,25 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          exact
           path="/"
-          element={<MovieList />}
-        />
+          element={<Outlet />}
+        >
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/Tenzies"
+            element={<Tenzies />}
+          />
+          <Route
+            path="/Movie"
+            element={<Movie />}
+          />
+        </Route>
       </Routes>
+
+      <br />
       <Footer />
     </div>
   );

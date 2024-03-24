@@ -46,6 +46,7 @@ export default function Create() {
   return (
     <>
       <Button
+        className="mt-1"
         variant="primary"
         onClick={handleShow}
       >

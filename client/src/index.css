@@ -10,6 +10,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.home{
+  background-color: white;
+}
+/* 
 .center {
   display: block;
   margin-left: auto;
@@ -24,4 +28,4 @@ code {
 .create-label{
   width: 20% !important;
   background-color: cadetblue;
-}
+} */
